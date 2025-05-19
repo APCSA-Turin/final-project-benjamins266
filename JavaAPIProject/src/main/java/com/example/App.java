@@ -12,6 +12,7 @@ public class App
         System.out.println("Would you like to continue playing?");
         String ans = scan.nextLine();
         if(ans.toLowerCase().equals("no")){
+            System.out.println("Your Max Streak Was: " + Game.getMax());
             play = false;
         }
         }

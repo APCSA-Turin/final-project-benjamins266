@@ -36,18 +36,21 @@ public class API{
 
     public static Images getWords(){
         try { // learned about try/catch from https://www.w3schools.com/java/java_try_catch.asp
-        String[] words = {"Jupiter", "Earth", "Moon", "Uranus", "Sun", "Andromeda", "Mercury", "Venus", "Pluto", "Neptune", "Saturn"};
+        String[] words = {"Jupiter", "Earth", "Moon", "Uranus", "Sun", "Andromeda Galaxy", "Mercury", "Venus", "Pluto", "Neptune", "Saturn", "Milky Way Galaxy"};
         int rand = (int) (Math.random() * words.length);
+        int rand2 = (int) (Math.random() * 10);
         String word = words[rand];
         String search = "https://images-api.nasa.gov/search?q=" + java.net.URLEncoder.encode(word, "UTF-8") + "&media_type=image"; //learned the URLEncoder from https://stackoverflow.com/questions/213506/java-net-urlencoder-encodestring-is-deprecated-what-should-i-use-instead
         String output = API.getData(search);
         API.saveData(output);
         JSONObject json = new JSONObject(output);
         JSONArray items = json.getJSONObject("collection").getJSONArray("items");
-        JSONObject image = items.getJSONObject((int) (Math.random() * 10));
+        JSONObject image = items.getJSONObject(rand2);
         JSONArray links = image.getJSONArray("links");
+        JSONArray data = image.getJSONArray("data");
         String url = links.getJSONObject(0).getString("href");
-        return new Images(word, url);
+        String date = data.getJSONObject(0).getString("date_created");
+        return new Images(word, url, date);
 
     } catch (Exception e) {
         return null;

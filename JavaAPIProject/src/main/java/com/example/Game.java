@@ -8,6 +8,8 @@ public class Game{
     private int rGuesses;
     private static int totalGuesses;
     private static int numGames;
+    private static int numCorrect;
+    private static int max;
 
     public Game(Images image){ 
         this.image = image;
@@ -16,9 +18,15 @@ public class Game{
         for(int i = 0; i<image.getName().length(); i++){
             wordArray.add("_ ");
         }
-        System.out.println(image.getUrl());
-        System.out.println(image.getName());
+        System.out.println("\n" + image.getUrl());
+        System.out.println("\nDate Picture Taken: " + image.getDate());
+        //testing
+        System.out.println("\n" + image.getName());
         numGames++;
+    }
+
+    public static int getMax(){
+        return max;
     }
 
     public void run(){
@@ -26,10 +34,17 @@ public class Game{
         int count = 0;
         while(gameRun){
         Scanner scan = new Scanner(System.in);
-        System.out.print("Average Guesses Per Game: " + average());
+        System.out.print("\nAverage Guesses Per Game: " + average());
         System.out.println("      Remaining Guesses: " + rGuesses);
-        System.out.print("Total Guesses: " + totalGuesses);
-        System.out.println("      Total Games: " + numGames);
+        System.out.print("Streak: " + numCorrect);
+        System.out.println("      Max Streak: " + max);
+        // System.out.print("\nTotal Guesses: " + totalGuesses);
+        // System.out.println("      Total Games: " + numGames);
+        if(image.getName().indexOf("Galaxy") !=-1){
+            System.out.println("\nWhat Galaxy is This?");
+        } else {
+            System.out.println("\nWhat Space Structure is This?");
+        }
         //testing
         for(int i  = 0; i<wordArray.size(); i++){
             System.out.print(wordArray.get(i));
@@ -37,6 +52,10 @@ public class Game{
         System.out.println("\nEnter your Guess:");
         String guess = scan.nextLine();
         if(guess(guess)){
+            numCorrect++;
+            if(numCorrect>max){
+                max = numCorrect;
+            }
             System.out.println("Correct! The answer was: " + guess);
             // gameRun = false;
             break;
@@ -45,9 +64,11 @@ public class Game{
             count++;
         }
         if(rGuesses == 0){
-            System.out.println("You lose! The answer was: " + image.getName());
+            System.out.println("You lose! The answer was: " + image.getName() + "\nYour Final Streak Was: " + numCorrect);
+            numCorrect = 0;
             break;
         }
+
     }
     }
 
@@ -62,6 +83,6 @@ public class Game{
     }
 
     public static double average(){
-        return Math.round(((double) totalGuesses/numGames) * 10.0) / 10.0;
+        return Math.round(((double) totalGuesses/(numGames-1)) * 10.0) / 10.0;
     }
 }
