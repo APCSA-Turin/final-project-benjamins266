@@ -6,16 +6,16 @@ This Java project displays an image off of the NASA API. The user will select ei
 ### API.java
 - fetches all of the data of the images and descriptions off of the NASA API, which is used in the program.
         Methods:
-'''java
+```java
 getData(string endpoint)
-'''
+```
 -Makes an HTTP POST request to the API
 -calls the API
 -Connects the program to an API using an endpoint
 -returns the JSON string for the user to use
-'''java
+```java
 getWords(ArrayList<String> names)
-'''
+```
 -Checks if the size of the names ArrayList is greater than 1
 -if the size is greater than 1 it will generate a random number from 0, to the size of the array
 -it will then make a get request to the API to generate the data of the random element in names
@@ -32,16 +32,16 @@ getWords(ArrayList<String> names)
 -if the keyword contains a space, doesn't contain any special characters, is longer than 2, isn't named Washington, doesn't contain planet, doesn't contain "space", "star", "EWTS", or "nasa", it will save the keyword in a String object
 - it accesses the url and date of the image
 -returns a new Image object that contains the keyword, the url and the date
-'''java
+```java
 saveData(String data)
-'''
+```
 -saves the data into a text file
 ### App.java
 - The runner class that will run the entire program
         Methods:
-'''java
+```java
 main( String[] args )
-'''
+```
 -Generates a pre-created ArrayList of words, used in the "easy" mode of the program
 -Creates a JFrame and will display the image
 -Prints out the choice of difficulties and recieves the users answer
@@ -58,26 +58,26 @@ main( String[] args )
 ### Game.java
 -This class contains all of the game logic to the program
         Methods:
-'''java
+```java
 Game(Image image)
-'''
+```
 -Constructs a game object using an image object
 -this creates a new ArrayList and fill it with "_ "
 -it will display the date of the picture, the url of the picture, and the name of the picture, for testing
-'''java
+```java
 getMax()
-'''
+```
 -returns the max number of correct guesses in a row
-'''java
+```java
 getNumCorrect()
-'''
+```
 -returns the number of correct guesses
-'''java
+```java
 setNumCorrect()
-'''
+```
 -sets the numCorrect variable to a new value
-'''java
+```java
 run()
-'''
--
+```
+
 
