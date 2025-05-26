@@ -38,8 +38,6 @@ public class Game{
         System.out.println("      Remaining Guesses: " + rGuesses);
         System.out.print("Streak: " + numCorrect);
         System.out.println("      Max Streak: " + max);
-        // System.out.print("\nTotal Guesses: " + totalGuesses);
-        // System.out.println("      Total Games: " + numGames);
         if(image.getName().indexOf("Galaxy") !=-1){
             System.out.println("\nWhat Galaxy is This?");
         } else {
@@ -57,7 +55,6 @@ public class Game{
                 max = numCorrect;
             }
             System.out.println("Correct! The answer was: " + guess);
-            // gameRun = false;
             break;
         } else {
             wordArray.set(count, image.getName().substring(count, count+1));

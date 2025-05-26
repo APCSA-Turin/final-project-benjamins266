@@ -79,5 +79,42 @@ setNumCorrect()
 ```java
 run()
 ```
+- displays the statistics of the game, such as the average guesses per game, the remaining number of guesses, the user's streak, and the max streak.
+- checks if the name of the image contains galaxy. If it does, it asks "what galaxy is this?", if not, it asks "what space structure is this?"
+- prints out the contents of the array list, wordArray, which contains the spaces where each letter wwill be revealed
+- prompts the user to guess, and recieves the input as a guess
+- if the users guess matches the name, it will update the number of correct guesses the user has
+- if the user guesses incorrectly, it will reveal one letter of the name of the image
+- if the user runs out of guesses, it will display the user's max streak
+```java
+guess(String guess)
+```
+- increases the total number of guesses
+- checks to see if the guess parameter matches the name of the image
+- returns true if the two match, returns false otherwise
+```java
+average()
+```
+- returns the rounded average of the total number of guesses to the total number of games
+### Images.java
+- This method contains all of the necessary information for the images
+        Methods:
+```java
+Images(String name, String url, String date)
+```
+- creates an image object
+- sets the name, url and date to the corresponding instance variable
+```java
+getName()
+```
+- returns the name of the image
+```java
+getUrl()
+```
+- returns the url of the image
+```java
+getDate()
+```
+- returns the date of the image
 
 

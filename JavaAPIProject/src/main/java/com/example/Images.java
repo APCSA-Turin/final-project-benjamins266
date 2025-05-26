@@ -22,8 +22,4 @@ public class Images {
     public String getDate(){
         return date;
     }
-
-    public String toString(){
-        return "Title: " + name + " URL: " + url;
-    }
 }
