@@ -35,7 +35,7 @@ getWords(ArrayList<String> names)
 ```java
 saveData(String data)
 ```
--saves the data into a text file
+- saves the data into a text file
 ### App.java
 - The runner class that will run the entire program
         Methods:
@@ -56,7 +56,7 @@ main( String[] args )
 - Once the user answers "no", their maximum streak will be displayed, and the program will terminate
 - if the user enters neither "easy" nor "hard" the user will be told to try again
 ### Game.java
--This class contains all of the game logic to the program
+- This class contains all of the game logic to the program
         Methods:
 ```java
 Game(Image image)
