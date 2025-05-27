@@ -116,5 +116,13 @@ getUrl()
 getDate()
 ```
 - returns the date of the image
-
-
+###3. Features Implemented (Rubric Aligned)
+✔ Base Project (88%)
+- outputs 3 meaningful pieces of information (date, name and url)
+- has more than 3 classes (4)
+- connects to and calls an API
+✔ Basic Statistics or Machine Learning (6%)
+- calculates a stasticial method (average number of guesses)
+✔ Filter/Sort Data (2%)
+- I allowed the user to choose a category, and created a search using the input
+✔ Written Walkthrough (+5%)
