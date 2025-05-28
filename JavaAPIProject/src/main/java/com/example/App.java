@@ -1,23 +1,88 @@
 package com.example;
+
+
+import java.util.Arrays;
 import java.util.Scanner;
-public class App 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+public class App
 {
     public static void main( String[] args ) throws Exception
     {
+        //creates an array of pre determined words
+        ArrayList<String> words = new ArrayList<String>(Arrays.asList("Jupiter", "Earth", "Moon", "Uranus", "Sun", "Andromeda Galaxy", "Mercury", "Venus", "Pluto", "Neptune", "Saturn", "Milky Way Galaxy"));
+        //creates an empty arrayList that will hold the users search
+        ArrayList<String> singular = new ArrayList<>();
+        //setting up the scanner and frame for the image
         Scanner scan = new Scanner(System.in);
-        boolean play = true;
-        while(play){
-        Game game = new Game(API.getWords());
-        game.run();
-        System.out.println("Would you like to continue playing?");
-        String ans = scan.nextLine();
-        if(ans.toLowerCase().equals("no")){
-            System.out.println("Your Max Streak Was: " + Game.getMax());
-            play = false;
-        }
-        }
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500,500);
 
-        
 
+        //creates a label (used to build the frame)
+        JLabel label = new JLabel();
+        frame.add(label);
+        frame.setVisible(true);
+
+
+        //prompts the user to enter a difficulty
+        System.out.println("Enter a difficulty: ");
+        System.out.println("Hard   or   Easy");
+        String answer = scan.nextLine();
+
+
+        //if the user entered easy, the easy program will run
+        if(answer.toLowerCase().equals("easy")){
+            boolean play = true;
+            //the program will continue to run until play is false
+            while(play){
+                //creates an image object of a image from the api
+                Images image1 = API.getWords(words);
+                //creates a URL object using the url of the image
+                URL url = new URL(image1.getUrl());
+                ImageIcon image = new ImageIcon(url);
+                label.setIcon(image);
+                frame.pack();
+                Game game = new Game(image1);
+                game.run();
+                System.out.println("Would you like to continue playing?");
+                String ans = scan.nextLine();
+                if(ans.toLowerCase().equals("no") || ans.toLowerCase().equals("n")){
+                    System.out.println("Your Max Streak Was: " + Game.getMax());
+                    play = false;
+                }
+            }
+        } else if(answer.toLowerCase().equals("hard")){
+            boolean play = true;
+            System.out.println("Enter a category: (ie. Planets)");
+            String categories = scan.nextLine();
+            singular.add(categories);
+            while(play) {
+                Images image1 = API.getWords(singular);
+                while(image1.getName().length() == 0 || image1.getName() == null){
+                    image1 = API.getWords(singular);
+                }
+                URL url = new URL(image1.getUrl());
+                ImageIcon image = new ImageIcon(url);
+                label.setIcon(image);
+                frame.pack();
+                Game game1 = new Game(image1);
+                game1.run();
+                System.out.println("Would you like to continue playing?");
+                String ans = scan.nextLine();
+                if(ans.toLowerCase().equals("no") || ans.toLowerCase().equals("n")){
+                    System.out.println("Your Max Streak Was: " + Game.getMax());
+                    play = false;
+                }
+            }
+        } else {
+            System.out.println("Please enter a difficulty");
+        }
     }
 }
