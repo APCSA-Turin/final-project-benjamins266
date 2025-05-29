@@ -74,19 +74,23 @@ public class App
                 while(image1.getName().length() == 0 || image1.getName() == null){
                     image1 = API.getWords(singular);
                 }
+                //creates a URL object using the url of the image, and adds the image to the interface
                 URL url = new URL(image1.getUrl());
                 ImageIcon image = new ImageIcon(url);
                 label.setIcon(image);
                 frame.pack();
                 Game game1 = new Game(image1);
+                //runs the game
                 game1.run();
                 System.out.println("Would you like to continue playing?");
                 String ans = scan.nextLine();
+                //if the user enters "no" then the program ends
                 if(ans.toLowerCase().equals("no") || ans.toLowerCase().equals("n")){
                     System.out.println("Your Max Streak Was: " + Game.getMax());
                     play = false;
                 }
             }
+            //if neither hard or easy is entered, then the user is told to enter a valid difficulty
         } else {
             System.out.println("Please enter a difficulty");
         }
