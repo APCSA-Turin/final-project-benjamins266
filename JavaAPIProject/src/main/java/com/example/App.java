@@ -44,27 +44,33 @@ public class App
             while(play){
                 //creates an image object of a image from the api
                 Images image1 = API.getWords(words);
-                //creates a URL object using the url of the image
+                //creates a URL object using the url of the image, and adds the image to the interface
                 URL url = new URL(image1.getUrl());
                 ImageIcon image = new ImageIcon(url);
                 label.setIcon(image);
                 frame.pack();
                 Game game = new Game(image1);
+                //runs the game
                 game.run();
                 System.out.println("Would you like to continue playing?");
                 String ans = scan.nextLine();
+                //if the user enters "no" then the program ends
                 if(ans.toLowerCase().equals("no") || ans.toLowerCase().equals("n")){
                     System.out.println("Your Max Streak Was: " + Game.getMax());
                     play = false;
                 }
             }
+            //if the user enters hard
         } else if(answer.toLowerCase().equals("hard")){
             boolean play = true;
+            //it prompts the user to enter a category
             System.out.println("Enter a category: (ie. Planets)");
             String categories = scan.nextLine();
             singular.add(categories);
+            //will continue to run the program until play is false
             while(play) {
                 Images image1 = API.getWords(singular);
+                //will continually change the image until a valid image is selected
                 while(image1.getName().length() == 0 || image1.getName() == null){
                     image1 = API.getWords(singular);
                 }
