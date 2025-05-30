@@ -116,7 +116,7 @@ getUrl()
 getDate()
 ```
 - returns the date of the image
-###3. Features Implemented (Rubric Aligned)
+### Features Implemented (Rubric Aligned)
 ✔ Base Project (88%)
 - outputs 3 meaningful pieces of information (date, name and url)
 - has more than 3 classes (4)
