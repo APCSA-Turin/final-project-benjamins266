@@ -1,6 +1,5 @@
 package com.example;
 
-
 import java.util.Arrays;
 import java.util.Scanner;
 import java.awt.*;
@@ -10,6 +9,8 @@ import javax.swing.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 public class App
 {
     public static void main( String[] args ) throws Exception
@@ -86,7 +87,7 @@ public class App
                 String ans = scan.nextLine();
                 //if the user enters "no" then the program ends
                 if(ans.toLowerCase().equals("no") || ans.toLowerCase().equals("n")){
-                    System.out.println("Your Max Streak Was: " + Game.getMax());
+                    System.out.println("Thanks for playing! Your Max Streak Was: " + Game.getMax());
                     play = false;
                 }
             }

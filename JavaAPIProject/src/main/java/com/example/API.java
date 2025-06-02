@@ -1,22 +1,12 @@
 package com.example;
 
-
-
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-
-
-
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-
-
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -114,6 +104,7 @@ public class API {
 
         //if an exception is thrown, null is returned
         } catch (Exception e) {
+            System.out.println("Category not found");
             return null;
         }
     }

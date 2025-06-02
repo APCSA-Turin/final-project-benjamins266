@@ -2,7 +2,6 @@ package com.example;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-
 public class Game{
     //creates instance variables
     private Images image;
@@ -26,7 +25,7 @@ public class Game{
         //displays the date the picture was taken, and the name for testing
         System.out.println("\nDate Picture Taken: " + image.getDate());
         //testing
-        System.out.println("\n" + image.getName());
+//        System.out.println("\n" + image.getName());
         numGames++;
     }
 
